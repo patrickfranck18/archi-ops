@@ -33,5 +33,5 @@
    ```bash
    git clone https://github.com/patrickfranck18/archi-ops.git
 
-![Menu Dashboard](src/assets/Dashboard.jpeg)
-![CV Factory](src/assets/cvfactory.jpeg)
+![Menu Dashboard](./src/assets/Dashboard.jpeg)
+![CV Factory](./src/assets/cvfactory.jpeg)
