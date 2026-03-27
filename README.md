@@ -1,27 +1,37 @@
-# ArchiProductivity
+# 🚀 ArchiOps v1.0
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.21.
+**ArchiOps** est une console de pilotage de performance locale conçue pour les développeurs et architectes solutions. Elle centralise la gestion des missions critiques et la génération de documentation technique (CV Factory).
 
-## Development server
+![Angular 18](https://img.shields.io/badge/Angular-18-DD0031?style=for-the-badge&logo=angular)
+![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38B2AC?style=for-the-badge&logo=tailwind-css)
+![SCSS](https://img.shields.io/badge/SCSS-Hotpink?style=for-the-badge&logo=sass)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+---
 
-## Code scaffolding
+## 🛠️ Fonctionnalités Clés
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### 📊 Console de Supervision (Dashboard)
+- **Gestion de Missions** : Système CRUD complet pour suivre les tâches critiques.
+- **Catégorisation Intelligente** : Distinction entre missions Professionnelles, Personnelles, Urgentes et Apprentissage.
+- **Suivi de Performance** : Barre de progression en temps réel et calcul du taux de complétion.
+- **Mode Sombre Natif** : Interface optimisée pour la concentration nocturne.
 
-## Build
+### 🏭 CV Factory (ArchiStudio)
+- **Générateur Automatique** : Création de CV orientés "ingénieur" à partir de données structurées.
+- **Export PDF** : Exportation directe des documents pour soumission client.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## 💻 Stack Technique
 
-## Running unit tests
+- **Framework** : Angular 18 (Standalone Components)
+- **Styling** : Tailwind CSS & SCSS (Architecture modulaire)
+- **Routing** : `app.routes.ts` pour une navigation fluide
+- **Storage** : Persistance locale via `LocalStorage` pour une autonomie totale sans backend.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## 🚀 Installation & Lancement
 
-## Running end-to-end tests
+1. **Cloner le projet**
+   ```bash
+   git clone https://github.com/patrickfranck18/archi-ops.git
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+   <img src="src/assets/dashboard.jpeg" alt="Menu Dashboard" class="w-full h-full object-cover">
+   <img src="src/assets/cvfactory.jpeg" alt="CV Factory" class="w-full h-full object-cover">
