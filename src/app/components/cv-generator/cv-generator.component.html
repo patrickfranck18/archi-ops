@@ -1,0 +1,165 @@
+<div class="min-h-screen bg-slate-900 text-slate-200 p-4 md:p-8 font-sans">
+  
+  <header class="max-w-7xl mx-auto flex items-center justify-between mb-8 border-b border-slate-800 pb-6">
+    <div class="flex items-center gap-4">
+      <h1 class="text-2xl font-black tracking-tighter text-white">CV<span class="text-blue-500">Factory</span></h1>
+      <nav class="flex gap-4 ml-8">
+        <a routerLink="/dashboard" class="text-slate-500 hover:text-white transition-all text-sm font-bold">Dashboard</a>
+        <a routerLink="/cv-generator" class="text-blue-500 border-b-2 border-blue-500 pb-1 text-sm font-bold">CV Factory</a>
+      </nav>
+    </div>
+<button (click)="printCV()" class="flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white rounded-xl font-semibold transition-all shadow-lg shadow-blue-500/20 text-sm">
+  <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-5 h-5">
+    <path stroke-linecap="round" stroke-linejoin="round" d="M3 16.5v2.25A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75V16.5M16.5 12 12 16.5m0 0L7.5 12m4.5 4.5V3" />
+  </svg>
+  Exporter en PDF
+</button>
+  </header>
+
+  <main class="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12">
+    
+    <section class="space-y-6">
+      <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-2xl">
+        <h2 class="text-xl font-bold mb-6 text-white flex items-center gap-2">
+          <span class="p-2 bg-blue-500/10 text-blue-500 rounded-lg">1</span> 
+          Informations Personnelles
+        </h2>
+        <div class="space-y-4">
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Nom Complet</label>
+            <input [(ngModel)]="profile.fullName" type="text" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none">
+          </div>
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Poste Visé</label>
+            <input [(ngModel)]="profile.title" type="text" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none">
+          </div>
+          <div class="grid grid-cols-2 gap-4">
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Email</label>
+              <input [(ngModel)]="profile.email" type="email" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none">
+            </div>
+            <div>
+              <label class="block text-xs font-bold uppercase tracking-widest text-slate-500 mb-2">Téléphone</label>
+              <input [(ngModel)]="profile.phone" type="text" class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none">
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="bg-slate-800 p-8 rounded-3xl border border-slate-700 shadow-2xl mt-6">
+  <h2 class="text-xl font-bold mb-6 text-white flex items-center gap-2">
+    <span class="p-2 bg-blue-500/10 text-blue-500 rounded-lg">2</span> 
+    Stack Technique
+  </h2>
+  <textarea 
+    [(ngModel)]="skills" 
+    placeholder="Séparez vos compétences par des virgules..."
+    class="w-full bg-slate-900 border border-slate-700 rounded-xl p-3 focus:ring-2 focus:ring-blue-500 outline-none h-32 text-sm text-slate-300">
+  </textarea>
+</div>
+
+      <div class="bg-blue-600/10 p-6 rounded-3xl border border-blue-500/30">
+        <h3 class="text-blue-400 font-bold mb-2 flex items-center gap-2">
+          <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
+            <path fill-rule="evenodd" d="M11.3 1.047a1 1 0 01.897.487l1.735 3.21 3.574.519a1 1 0 01.554 1.705l-2.586 2.52.61 3.56a1 1 0 01-1.45 1.054L10 12.437l-3.194 1.678a1 1 0 01-1.45-1.054l.61-3.56-2.586-2.52a1 1 0 01.554-1.705l3.574-.519 1.735-3.21a1 1 0 01.897-.487z" clip-rule="evenodd" />
+          </svg>
+          Sourcing de données
+        </h3>
+        <p class="text-sm text-slate-400">
+          Il y a  <strong>{{ missions.length }} missions réalisées</strong> dans le tableau. Elles sont automatiquement formatées pour le CV.
+        </p>
+      </div>
+      
+    </section>
+
+    <section class="sticky top-8">
+      <div id="cv-paper" class="bg-white text-slate-900 w-full aspect-[1/1.414] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] p-12 rounded-sm origin-top scale-95 lg:scale-100">
+        
+        <header class="border-b-4 border-blue-600 pb-6 mb-8 flex justify-between items-start">
+  <div>
+    <h1 class="text-4xl font-black uppercase tracking-tighter">{{ profile.fullName }}</h1>
+    <p class="text-xl text-blue-600 font-bold mt-1">{{ profile.title }}</p>
+    <div class="flex gap-4 mt-4 text-xs font-semibold text-slate-500">
+      <span>{{ profile.email }}</span>
+      <span>•</span>
+      <span>{{ profile.phone }}</span>
+    </div>
+  </div>
+  
+  <div class="w-25 h-24 bg-slate-200 rounded-xl overflow-hidden border-2 border-slate-100 shadow-sm">
+    <img src="/pp.jpg" alt="Photo" class="w-full h-full object-cover">
+    </div>
+</header>
+
+        <section>
+          <h2 class="text-sm font-black uppercase tracking-[0.2em] text-slate-400 mb-4">Réalisations Récentes</h2>
+          <div class="space-y-6">
+            <div *ngFor="let m of missions" class="relative pl-6 border-l-2 border-slate-100 mb-8 last:mb-0">
+  <div class="absolute -left-[9px] top-1 w-4 h-4 rounded-full bg-white border-4 border-blue-600 shadow-sm"></div>
+  
+  <div class="flex justify-between items-start">
+    <h3 class="font-bold text-lg leading-tight text-slate-900">{{ m.title }}</h3>
+    <span class="text-[10px] font-black text-slate-400 uppercase tracking-widest bg-slate-50 px-2 py-0.5 rounded border border-slate-100">
+      {{ m.category }}
+    </span>
+  </div>
+
+  <p class="text-[10px] text-slate-400 mt-2 font-mono">
+    Accompli en {{ m.createdAt | date:'MMMM yyyy' }}
+  </p>
+
+  <p *ngIf="m.description" 
+     class="text-sm text-slate-600 mt-2 leading-relaxed whitespace-pre-line italic">
+    {{ m.description }}
+  </p>
+  
+</div>
+          </div>
+        </section>
+        <section class="mt-8">
+  <h2 class="text-sm font-black uppercase tracking-[0.2em] text-slate-400 mb-3">Stack Technique</h2>
+  <div class="flex flex-wrap gap-2">
+    <span *ngFor="let skill of skills.split(',')" class="px-3 py-1 bg-slate-100 text-slate-700 text-[10px] font-bold rounded-md border border-slate-200 uppercase tracking-wider">
+      {{ skill.trim() }}
+    </span>
+  </div>
+</section>
+        <section class="mt-10">
+  <h2 class="text-sm font-black uppercase tracking-[0.2em] text-slate-400 mb-6 flex items-center gap-4">
+    Formation <div class="h-px bg-slate-100 flex-1"></div>
+  </h2>
+  
+  <div class="grid grid-cols-1 gap-6">
+    <div *ngFor="let edu of educations" class="flex gap-4">
+      <div class="text-[10px] font-bold text-blue-600 min-w-[80px] pt-1">
+        {{ edu.period }}
+      </div>
+      <div>
+        <h3 class="font-bold text-slate-900 leading-tight">{{ edu.degree }}</h3>
+        <p class="text-xs text-slate-500 font-medium">{{ edu.school }}</p>
+        <p *ngIf="edu.description" class="text-xs text-slate-400 mt-1 italic">{{ edu.description }}</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+        <div *ngIf="missions.length === 0" class="py-10 text-center border-2 border-dashed border-slate-200 rounded-xl text-slate-400 italic">
+          Complétez des tâches dans le Dashboard pour les voir apparaître ici.
+        </div>
+        <footer class="mt-12 pt-8 border-t border-slate-100 flex justify-between items-center opacity-50">
+  <p class="text-[9px] font-medium text-slate-400 italic">
+    Généré via ArchiOps v1.0 • {{ today | date:'dd/MM/yyyy' }}
+  </p>
+  <div class="flex gap-1">
+    <div class="w-1.5 h-1.5 bg-blue-600 rounded-full"></div>
+    <div class="w-1.5 h-1.5 bg-blue-400 rounded-full"></div>
+    <div class="w-1.5 h-1.5 bg-blue-200 rounded-full"></div>
+  </div>
+</footer>
+      </div>
+      
+    </section>
+    
+
+  </main>
+</div>

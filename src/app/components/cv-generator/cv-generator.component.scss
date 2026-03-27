@@ -1,0 +1,36 @@
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #cv-paper, #cv-paper * {
+    visibility: visible;
+  }
+
+  #cv-paper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+  }
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #cv-paper, #cv-paper * {
+    visibility: visible;
+  }
+  #cv-paper {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    box-shadow: none !important;
+    border: none !important;
+    margin: 0 !important;
+    padding: 2cm !important;
+  }
+}
